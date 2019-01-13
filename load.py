@@ -2,30 +2,31 @@ import os
 import pandas as pd
 
 
-def load_some_xlsx(name_without_extension, folder):
+def load_some_xlsx(name, folder, index_col=None):
     file_path = os.path.join(
         folder,
-        "{}.xlsx".format(name_without_extension)
+        name
     )
 
-    some_frame = pd.read_excel(
+    some_dataframe = pd.read_excel(
         file_path,
         encoding="cp1251",
-        sep=";"
+        sep=";",
+        index_col=index_col
     )
-    return some_frame
+    return some_dataframe
 
 
-def load_some_csv(name_without_extension, folder):
+def load_some_csv(name, folder):
     file_path = os.path.join(
         folder,
-        "{}.csv".format(name_without_extension)
+        name
     )
 
-    some_frame = pd.read_csv(
+    some_dataframe = pd.read_csv(
         file_path,
         encoding="cp1251",
         sep=";",
         engine="python"
     )
-    return some_frame
+    return some_dataframe
